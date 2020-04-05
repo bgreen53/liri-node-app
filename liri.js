@@ -12,6 +12,10 @@ var term= process.argv.slice(3)
 //console.log(term)
 //bands in town api to return concert data
 function concert() {
+  if(!process.argv[3]){
+    console.log("Please enter an artist")
+  
+  }else{
      bandTerm = term.join("%20")
         axios.get("https://rest.bandsintown.com/artists/" + bandTerm + "/events?app_id=codingbootcamp").then(
   function(response) {
@@ -23,6 +27,7 @@ function concert() {
     console.log("\n-----------\n")
 }
   })
+}
 };
 
 
@@ -35,6 +40,7 @@ var spotify = new Spotify({
 
   
 function song(){
+//if search term is blank return "The Sign" by Ace of Base
   if(!process.argv[3]){
     spotify
 .search({ type: 'track', query: "the sign" 
@@ -52,6 +58,7 @@ console.log("\n-----------\n")
 });
     
 }else{
+//otherwise return search term results
 spotify
 .search({ type: 'track', query: term 
 })
@@ -74,11 +81,13 @@ console.log("\n-----------\n")
 //OMDB api for retuning movie data
 function movie(){
 var movQuery=("http://www.omdbapi.com/?t="+ term+"&y=&plot=short&apikey=trilogy")
+//if search term is blank return "Mr.Nobody"
 if(!process.argv[3]){
   movQuery=("http://www.omdbapi.com/?t=Mr.Nobody&y=&plot=short&apikey=trilogy")
 
 }
-console.log(movQuery)
+//otherwise return search term results
+// console.log(movQuery)
 axios.get(movQuery).then(function(movRes){
     var movData = movRes.data
 
