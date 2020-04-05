@@ -4,11 +4,16 @@ var fs= require("fs")
 const axios = require('axios');
 var Spotify = require('node-spotify-api');
 
-var cmd = process.argv[2]
-var term= process.argv[3]
 
- var concert = function() {
-        axios.get("https://rest.bandsintown.com/artists/" + term + "/events?app_id=codingbootcamp").then(
+//varibles for capturing user input
+var cmd = process.argv[2]
+var term= process.argv.slice(3)
+
+
+//bands in town api to return concert data
+function concert() {
+     songTerm = term.join("%20")
+        axios.get("https://rest.bandsintown.com/artists/" + songTerm + "/events?app_id=codingbootcamp").then(
   function(response) {
     var data = response.data
     for(var i=0; i<data.length;i++){
@@ -21,13 +26,15 @@ var term= process.argv[3]
 };
 
 
+
+//spotify api for returning song data
 var spotify = new Spotify({
     id: keys.spotify.id,
     secret: keys.spotify.secret,
   });
 
   
-var song = function(){
+function song(){
 spotify
 .search({ type: 'track', query: term })
 .then(function(response) {
@@ -45,11 +52,43 @@ console.log("\n-----------\n")
 });
 }
 
-if(cmd==="concert-this"){
+//OMDB api for retuning movie data
+function movie(){
+axios.get("http://www.omdbapi.com/?t="+ term+"&y=&plot=short&apikey=trilogy").then(function(movRes){
+    var movData = movRes.data
+
+ console.log("Title: "+movData.Title)
+ console.log("IMDB Rating: "+movData.Ratings[0].Value)
+ console.log("Rotten Tomatoes: "+movData.Ratings[1].Value)
+ console.log("Country: "+movData.Country)
+ console.log("Language: "+movData.Language)
+ console.log("Plot: "+movData.Plot)
+ console.log("Cast: "+movData.Actors)
+
+
+
+});
+}
+
+//switch statements to call functions based on user command
+
+switch (cmd.toLowerCase()) {
+    case "concert-this":
     concert()
+        
+    break;
 
-}
-if(cmd==="spotify-this-song"){
+    case "spotify-this-song":
     song()
+        
+    break;
+    case "movie-this":
+    movie()
+        
+    break;
 
+    default:
+        console.log("I do not recognize that command. Please use 'concert-this', 'spotify-this-song', or 'movie-this'")
+        break;
 }
+
