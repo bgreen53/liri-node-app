@@ -21,4 +21,4 @@
 
    ### Concert-this
 
-   ![Results](./screenshots/concert_this.PNG)
+   ![Results](/screenshots/concert_this.png)
