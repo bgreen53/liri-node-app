@@ -33,3 +33,20 @@
    This command allows the user to input a movie title and LIRI will return movie ratings from IMDB and Rotten Tomatoes, the country the movie was made in, the language, the cast, and the plot.
 
    ![Results](/screenshots/movie-this.png)
+
+    ### Do-what-it-says
+   This command allows will take a command and search term from the random.txt file and return the result.
+
+   ![Results](/screenshots/doIt.png)
+
+   ### Blank Search Terms
+   Each command will has a default return if no search term is entered.
+
+   ![Results](/screenshots/noterm.png)
+   ![Results](/screenshots/noterm2.png)
+
+   ### Unrecognized Commands
+   If the user puts in an invalid command, LIRI will inform the user how to communitcate with him.
+
+   ![Results](/screenshots/norec.png)
+
