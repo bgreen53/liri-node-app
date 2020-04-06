@@ -34,7 +34,7 @@
 
    ![Results](/screenshots/movie-this.png)
 
-    ### Do-what-it-says
+   ### Do-what-it-says
    This command allows will take a command and search term from the random.txt file and return the result.
 
    ![Results](/screenshots/doIt.png)
@@ -49,4 +49,19 @@
    If the user puts in an invalid command, LIRI will inform the user how to communitcate with him.
 
    ![Results](/screenshots/norec.png)
+
+   ## Technologies Used
+* Javascript
+* Nodejs
+* Node packages:
+    * Node-Spotify-API
+    * Axios
+    * Moment
+    * DotEnv
+* APIs used:
+    * Bands in Town
+    * OMDB
+    * Spotify
+* Git
+* GitHub
 
