@@ -3,6 +3,7 @@ var keys = require("./keys.js");
 var fs= require("fs")
 const axios = require('axios');
 var Spotify = require('node-spotify-api');
+var moment = require("moment")
 
 
 //varibles for capturing user input
@@ -59,17 +60,20 @@ function concert() {
      bandTerm = term.join("%20")
         axios.get("https://rest.bandsintown.com/artists/" + bandTerm + "/events?app_id=codingbootcamp").then(
   function(response) {
-    var data = response.data
+    var data = response.data;
+    
     for(var i=0; i<data.length;i++){
+    var date = data[i].datetime.split("T").join(" ");
+    var conDate = moment(date).format("MMM DD, YYYY h:mmA");
     console.log("Venue Name: "+ data[i].venue.name);
     console.log("Venue Location: "+ data[i].venue.city)
-    console.log("Concert Date: " + data[i].datetime)
+    console.log("Concert Date: " + conDate)
     console.log("\n-----------\n")
-
+    
     printData = [
       "Venue Name: "+ data[i].venue.name,
       "\n"+"Venue Location: "+ data[i].venue.city,
-      "\n"+"Concert Date: " + data[i].datetime,
+      "\n"+"Concert Date: " + conDate,
       "\n-----------\n"
     ]
     print()
