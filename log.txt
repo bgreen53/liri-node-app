@@ -1,0 +1,44 @@
+Venue Name: Moosburg,
+Venue Location: Munich,
+Concert Date: 2020-06-13T19:00:00,
+-----------
+Venue Name: Limestone Festival,
+Venue Location: Moosburg An Der Isar,
+Concert Date: 2020-06-14T12:00:00,
+-----------
+Venue Name: Ippodromo SNAI San Siro,
+Venue Location: Milano,
+Concert Date: 2020-06-17T16:00:00,
+-----------
+Venue Name: Tinderbox Festival,
+Venue Location: Odense,
+Concert Date: 2020-06-25T19:00:00,
+-----------
+Venue Name: PARQUE DA BELAVISTA,
+Venue Location: Lisbon,
+Concert Date: 2020-06-21T12:00:00,
+-----------
+Venue Name: Pinkpop Festival,
+Venue Location: Landgraaf,
+Concert Date: 2020-06-20T10:00:00,
+-----------
+Venue Name: Lollapalooza Festival,
+Venue Location: Stockholm,
+Concert Date: 2020-06-26T12:00:00,
+-----------
+Venue Name: Rock In Rio Lisbon,
+Venue Location: Lisbon,
+Concert Date: 2020-06-28T23:59:00,
+-----------
+Venue Name: Parque da Bela Vista,
+Venue Location: Lisboa,
+Concert Date: 2021-06-27T12:00:00,
+-----------
+Venue Name: Glasgow Green,
+Venue Location: Glasgow,
+Concert Date: 2020-06-30T17:00:00,
+-----------
+Venue Name: BST Hyde Park,
+Venue Location: London,
+Concert Date: 2020-07-02T12:00:00,
+-----------

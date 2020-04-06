@@ -7,10 +7,12 @@ var Spotify = require('node-spotify-api');
 
 //varibles for capturing user input
 var cmd = process.argv[2]
+if(process.argv[3]){
 var term= process.argv.slice(3)
+}
+var printData =[]
 
-
-
+//console.log(term)
 //function to run command from txt file
 function doIt(){
   fs.readFile("random.txt","utf8",function(error,data){
@@ -63,6 +65,14 @@ function concert() {
     console.log("Venue Location: "+ data[i].venue.city)
     console.log("Concert Date: " + data[i].datetime)
     console.log("\n-----------\n")
+
+    printData = [
+      "Venue Name: "+ data[i].venue.name,
+      "\n"+"Venue Location: "+ data[i].venue.city,
+      "\n"+"Concert Date: " + data[i].datetime,
+      "\n-----------\n"
+    ]
+    print()
 }
   })
 }
@@ -90,7 +100,16 @@ console.log("Artist: " +songData[0].artists[0].name);
 console.log("Song: " +songData[0].name);   
 console.log("Album: " +songData[0].album.name);
 console.log("Preview: " +songData[0].preview_url);
-console.log("\n-----------\n")
+console.log("\n-----------\n");
+
+printData = [
+  "Artist: " +songData[0].artists[0].name,
+  "\n"+"Song: " +songData[0].name,
+  "\n"+"Album: " +songData[0].album.name,
+  "\n"+"Preview: " +songData[0].preview_url,
+  "\n-----------\n"
+]
+print();
 })
 .catch(function(err) {
   console.log(err);
@@ -110,6 +129,16 @@ console.log("Song: " +songData[i].name);
 console.log("Album: " +songData[i].album.name);
 console.log("Preview: " +songData[i].preview_url);
 console.log("\n-----------\n")
+
+printData = [
+  "Artist: " +songData[i].artists[0].name,
+  "\n"+"Song: " +songData[i].name,
+  "\n"+"Album: " +songData[i].album.name,
+  "\n"+"Preview: " +songData[i].preview_url,
+  "\n-----------\n"
+]
+print();
+
 }
 })
 .catch(function(err) {
@@ -130,20 +159,36 @@ if(!term){
 // console.log(movQuery)
 axios.get(movQuery).then(function(movRes){
     var movData = movRes.data
-
- console.log("Title: "+movData.Title)
- console.log("IMDB Rating: "+movData.Ratings[0].Value)
- console.log("Rotten Tomatoes: "+movData.Ratings[1].Value)
- console.log("Country: "+movData.Country)
- console.log("Language: "+movData.Language)
- console.log("Plot: "+movData.Plot)
- console.log("Cast: "+movData.Actors)
-
-
-
-
+    console.log("Title: "+movData.Title)
+    console.log("IMDB Rating: "+movData.Ratings[0].Value)
+    console.log("Rotten Tomatoes: "+movData.Ratings[1].Value)
+    console.log("Country: "+movData.Country)
+    console.log("Language: "+movData.Language)
+    console.log("Plot: "+movData.Plot)
+    console.log("Cast: "+movData.Actors)
+    console.log("\n-----------\n")
+ 
+    printData = [
+      "Title:" +movData.Title,
+      "\n"+"IMDB Rating: "+movData.Ratings[0].Value,
+      "\n"+"Rotten Tomatoes: "+movData.Ratings[1].Value,
+      "\n"+"Country: "+movData.Country,
+      "\n"+"Language: "+movData.Language,
+      "\n"+"Plot: "+movData.Plot,
+      "\n"+"Cast: "+movData.Actors,
+      "\n-----------\n"
+    ]
+    print()     
 
 });
+}
+
+//Print results to log file
+function print(){
+  fs.appendFile('log.txt', printData, function (err) {
+    if (err) throw err;
+    console.log('Log Updated!');
+  });
 }
 
 
@@ -161,7 +206,7 @@ switch (cmd.toLowerCase()) {
     break;
     case "movie-this":
     movie()
-        
+     
     break;
     case "do-what-it-says":
     doIt()
