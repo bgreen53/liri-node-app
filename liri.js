@@ -218,7 +218,7 @@ switch (cmd.toLowerCase()) {
     break;
 
     default:
-        console.log("I do not recognize that command. Please use 'concert-this <artist name>', 'spotify-this-song <song name>', or 'movie-this <movie name>'")
+        console.log("I do not recognize that command. Please use 'concert-this <artist name>', 'spotify-this-song <song name>', 'movie-this <movie name>', or 'do-what-it-says'")
         break;
 }
 
