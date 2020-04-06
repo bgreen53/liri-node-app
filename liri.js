@@ -22,7 +22,7 @@ function doIt(){
       return console.log(error);
     }
 
-    console.log(data);
+    
     var dataArr = data.split(",");
 
     cmd= dataArr[0]
@@ -121,7 +121,7 @@ print();
     
 }else{
 //otherwise return search term results
-console.log(term)
+// console.log(term)
 spotify
 .search({ type: 'track', query: term 
 })
