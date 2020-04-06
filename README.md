@@ -25,6 +25,11 @@
    ![Results](/screenshots/concert-this.png)
 
    ### Spotify-this-song
-   This command allows the user to input an song title and LIRI will return a list of song matching that title. Each song is accompanied by artist, album, and a link to a song preview from Spotify.
+   This command allows the user to input an song title and LIRI will return a list of songs matching that title. Each song is accompanied by artist, album, and a link to a song preview from Spotify.
 
    ![Results](/screenshots/spotify-this-song.png)
+
+   ### Movie-this
+   This command allows the user to input a movie title and LIRI will return movie ratings from IMDB and Rotten Tomatoes, the country the movie was made in, the language, the cast, and the plot.
+
+   ![Results](/screenshots/movie-this.png)
