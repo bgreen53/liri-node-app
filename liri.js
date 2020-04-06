@@ -9,10 +9,48 @@ var Spotify = require('node-spotify-api');
 var cmd = process.argv[2]
 var term= process.argv.slice(3)
 
-//console.log(term)
+
+
+//function to run command from txt file
+function doIt(){
+  fs.readFile("random.txt","utf8",function(error,data){
+
+    if(error){
+      return console.log(error);
+    }
+
+    console.log(data);
+    var dataArr = data.split(",");
+
+    cmd= dataArr[0]
+    term = dataArr[1].split(" ")
+    
+
+    switch (cmd.toLowerCase()) {
+      case "concert-this":
+      concert()   
+      break;
+  
+      case "spotify-this-song":  
+      song()    
+      break;
+
+      case "movie-this":
+      movie()
+      break;    
+  
+      default:
+          console.log("I do not recognize that command. Please use 'concert-this <artist name>', 'spotify-this-song <song name>', or 'movie-this <movie name>'")
+          break;
+  }
+
+
+  });
+};
+
 //bands in town api to return concert data
 function concert() {
-  if(!process.argv[3]){
+  if(!term){
     console.log("Please enter an artist")
   
   }else{
@@ -41,7 +79,8 @@ var spotify = new Spotify({
   
 function song(){
 //if search term is blank return "The Sign" by Ace of Base
-  if(!process.argv[3]){
+
+  if(!term){
     spotify
 .search({ type: 'track', query: "the sign" 
 })
@@ -59,6 +98,7 @@ console.log("\n-----------\n")
     
 }else{
 //otherwise return search term results
+console.log(term)
 spotify
 .search({ type: 'track', query: term 
 })
@@ -82,7 +122,7 @@ console.log("\n-----------\n")
 function movie(){
 var movQuery=("http://www.omdbapi.com/?t="+ term+"&y=&plot=short&apikey=trilogy")
 //if search term is blank return "Mr.Nobody"
-if(!process.argv[3]){
+if(!term){
   movQuery=("http://www.omdbapi.com/?t=Mr.Nobody&y=&plot=short&apikey=trilogy")
 
 }
@@ -106,6 +146,7 @@ axios.get(movQuery).then(function(movRes){
 });
 }
 
+
 //switch statements to call functions based on user command
 
 switch (cmd.toLowerCase()) {
@@ -120,6 +161,10 @@ switch (cmd.toLowerCase()) {
     break;
     case "movie-this":
     movie()
+        
+    break;
+    case "do-what-it-says":
+    doIt()
         
     break;
 
